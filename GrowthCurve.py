@@ -18,17 +18,28 @@ class GrowthCurveVisualiser:
         self.od600 = data["OD600"].tolist()
 
     @staticmethod
-    def create_data_file():
-        name = input("Enter a name for the experiment: ")
+    def create_data_file(name=None,time=None, od600=None, sample_volumes=None):
+        """
+        Function to create a CSV file for growth curve data. It prompts the user for time, OD600, and sample volume data points,
+        calculates the resuspend volumes, and saves the data to a CSV file.
+        """
 
-        time_input = input("What are your time data points? ")
-        od_input = input("What are your OD600 data points? ")
-        sample_volume_input = input("What are the sample volumes? ")
+        if name is None:
+            name = input("Enter a name for the experiment: ")
 
-        time = [float(x.strip()) for x in time_input.split(",")]
-        od600 = [float(x.strip()) for x in od_input.split(",")]
-        sample_volumes = [float(x.strip()) for x in sample_volume_input.split(",")]
+        if time is None:
+            time = input("What are your time data points?")
+            time = [float(x.strip()) for x in time.split(",")]
 
+        if od600 is None:
+            od600 = input("What are your OD600 data points? ")
+            od600 = [float(x.strip()) for x in od600.split(",")]
+
+        if sample_volumes is None:
+            sample_volumes = input("What are the sample volumes? ")
+            sample_volumes = [float(x.strip()) for x in sample_volumes.split(",")]
+            
+        
         if not (len(time) == len(od600) == len(sample_volumes)):
             print(
                 "Error: Time, OD600, and sample volumes "
