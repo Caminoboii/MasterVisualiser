@@ -1,0 +1,4 @@
+conda install pandas
+conda install numpy
+conda install ipython
+conda install matplotlib
