@@ -35,9 +35,9 @@ class Lambert:
 
         # Print available results
         if self.molar_concentration is not None:
-            print(f"Molar Concentration: {self.molar_concentration:.4f} M")
+            print(f"Molar Concentration: {self.molar_concentration:.4e} M")
         if self.mg_per_mL_concentration is not None:
-            print(f"Concentration: {self.mg_per_mL_concentration:.4f} mg/mL")
+            print(f"Concentration: {self.mg_per_mL_concentration:.4e} mg/mL")
 
     def calculate_molar_concentration(self, path_length: float = 1.0) -> float:
         """
@@ -68,7 +68,7 @@ class Lambert:
 
         Returns:
         float: The concentration in mg/mL.
-
+        
         Raises:
         ValueError: If mass_extinction_coefficient is not provided.
         """
